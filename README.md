@@ -1,20 +1,33 @@
-# Insight Bolt
+<center>
+  <img src="https://www.clearinsight.dev/images/github_header.png" width="120"/>
+</center>
 
-[![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
-[![Powered by Mason](https://img.shields.io/endpoint?url=https%3A%2F%2Ftinyurl.com%2Fmason-badge)](https://github.com/felangel/mason)
-[![License: MIT][license_badge]][license_link]
+</br>
 
-A Very Good Project created by Very Good CLI.
+[![Pub](https://img.shields.io/pub/v/clearinsight.svg)](https://pub.dartlang.org/packages/clearinsight)
+[![Build](https://img.shields.io/github/actions/workflow/status/clearinsightio/clearinsight-sdk/nightly.yaml?branch=stable)](https://github.com/clearinsightio/clearinsight-sdk/actions)
+[![Pub Likes](https://img.shields.io/pub/likes/clearinsight)](https://pub.dev/packages/clearinsight/score)
+[![Popularity](https://img.shields.io/pub/popularity/clearinsight)](https://pub.dev/packages/clearinsight/score)
+[![Pub points](https://img.shields.io/pub/points/clearinsight)](https://pub.dev/packages/clearinsight/score)
+[![Website](https://img.shields.io/badge/website-clearinsight.dev-blue.svg)](https://clearinsight.dev/)
 
-## Installation 💻
+Clear Insight is a Flutter SDK that allows you to easily integrate analytics into your Flutter app. It is built with developer experience in mind, and is designed to be easy to use and integrate into your app.
 
-**❗ In order to start using Insight Bolt you must have the [Flutter SDK][flutter_install_link] installed on your machine.**
+## 3-Minute Quick Start
 
-Add `insight_bolt` to your `pubspec.yaml`:
+### 1. Create a Clear Insight account
+
+[Sign up](https://app.clearinsight.dev/signup) for a Clear Insight account.
+
+### 2. Installation 💻
+
+**❗ In order to start using Clear Insight you must have the [Flutter SDK][flutter_install_link] installed on your machine.**
+
+Add `clear_insight` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  insight_bolt:
+  clear_insight:
 ```
 
 Install it:
@@ -23,52 +36,3 @@ Install it:
 flutter packages get
 ```
 
----
-
-## Continuous Integration 🤖
-
-Insight Bolt comes with a built-in [GitHub Actions workflow][github_actions_link] powered by [Very Good Workflows][very_good_workflows_link] but you can also add your preferred CI/CD solution.
-
-Out of the box, on each pull request and push, the CI `formats`, `lints`, and `tests` the code. This ensures the code remains consistent and behaves correctly as you add functionality or make changes. The project uses [Very Good Analysis][very_good_analysis_link] for a strict set of analysis options used by our team. Code coverage is enforced using the [Very Good Workflows][very_good_coverage_link].
-
----
-
-## Running Tests 🧪
-
-For first time users, install the [very_good_cli][very_good_cli_link]:
-
-```sh
-dart pub global activate very_good_cli
-```
-
-To run all unit tests:
-
-```sh
-very_good test --coverage
-```
-
-To view the generated coverage report you can use [lcov](https://github.com/linux-test-project/lcov).
-
-```sh
-# Generate Coverage Report
-genhtml coverage/lcov.info -o coverage/
-
-# Open Coverage Report
-open coverage/index.html
-```
-
-[flutter_install_link]: https://docs.flutter.dev/get-started/install
-[github_actions_link]: https://docs.github.com/en/actions/learn-github-actions
-[license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
-[license_link]: https://opensource.org/licenses/MIT
-[logo_black]: https://raw.githubusercontent.com/VGVentures/very_good_brand/main/styles/README/vgv_logo_black.png#gh-light-mode-only
-[logo_white]: https://raw.githubusercontent.com/VGVentures/very_good_brand/main/styles/README/vgv_logo_white.png#gh-dark-mode-only
-[mason_link]: https://github.com/felangel/mason
-[very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
-[very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
-[very_good_cli_link]: https://pub.dev/packages/very_good_cli
-[very_good_coverage_link]: https://github.com/marketplace/actions/very-good-coverage
-[very_good_ventures_link]: https://verygood.ventures
-[very_good_ventures_link_light]: https://verygood.ventures#gh-light-mode-only
-[very_good_ventures_link_dark]: https://verygood.ventures#gh-dark-mode-only
-[very_good_workflows_link]: https://github.com/VeryGoodOpenSource/very_good_workflows

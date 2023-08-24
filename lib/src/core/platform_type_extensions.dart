@@ -1,7 +1,9 @@
 import 'package:clear_insight/src/core/platform_type.dart';
 import 'package:flutter/foundation.dart';
 
-extension PlatformTypeExtensions on TargetPlatform {
+/// The Target Platform Extensions
+extension TargetPlatformExtensions on TargetPlatform {
+  /// The Platform Type
   PlatformType get platformType {
     return switch (this) {
       (TargetPlatform.android) => PlatformType.android,
@@ -10,6 +12,21 @@ extension PlatformTypeExtensions on TargetPlatform {
       (TargetPlatform.linux) => PlatformType.linux,
       (TargetPlatform.macOS) => PlatformType.macOS,
       (TargetPlatform.windows) => PlatformType.windows,
+    };
+  }
+}
+
+/// The Platform Type Extensions
+extension PlatformTypeExtensions on PlatformType {
+  /// The name of the platform
+  String get name {
+    return switch (this) {
+      (PlatformType.android) => 'android',
+      (PlatformType.fuchsia) => 'fuchsia',
+      (PlatformType.iOS) => 'iOS',
+      (PlatformType.linux) => 'linux',
+      (PlatformType.macOS) => 'macOS',
+      (PlatformType.windows) => 'windows',
     };
   }
 }

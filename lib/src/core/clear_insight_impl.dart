@@ -12,7 +12,7 @@ class _ClearInsightImplementation implements ClearInsight {
   /// This is only available after you call [ClearInsight.init]
   /// It is an error to call this getter before calling [ClearInsight.init]
   ///
-  /// Your project ID can be found in the [ClearInsight Dashboard](https://insightbolt.app/dashboard)
+  /// Your project ID can be found in the [ClearInsight Dashboard](https://clearinsight.dev/dashboard)
   late String _projectId;
 
   /// Whether the instance has been initialized

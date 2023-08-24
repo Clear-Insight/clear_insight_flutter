@@ -1,10 +1,10 @@
-import 'package:clear_insight/src/core/services/services.dart';
-import 'package:flutter/foundation.dart';
 import 'package:clear_insight/src/core/records.dart';
+import 'package:clear_insight/src/core/services/services.dart';
 
 /// The Event Model
 /// This is used to log events
 class EventModel {
+  /// The Event Model constructor
   EventModel({
     required ClearInsightServices services,
   }) : _services = services;
@@ -14,10 +14,8 @@ class EventModel {
   /// Log an event
   /// This will log an event to the console
   Future<void> logEvent(DataRecord<EventRecord> eventRecord) async {
-    if (kDebugMode) {
-      await _services.eventSubmitter.submit(
-        eventRecord.data,
-      );
-    }
+    await _services.eventSubmitter.submit(
+      eventRecord,
+    );
   }
 }

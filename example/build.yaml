@@ -1,6 +1,6 @@
 targets:
   $default:
     builders:
-      insight_bolt_generator:
+      clear_insight_generator:
         options:
           project_id: "YOUR_PROJECT_ID2"

@@ -14,11 +14,11 @@ part 'clear_insight_impl.dart';
 /// The ClearInsight class
 /// This is the main class for the library
 /// ```dart
-/// ClearInsight insightBolt = ClearInsight.instance;
+/// ClearInsight clearInsight = ClearInsight.instance;
 /// ```
 /// or
 /// ```dart
-/// ClearInsight insightBolt = ClearInsight.I;
+/// ClearInsight clearInsight = ClearInsight.I;
 /// ```
 ///
 /// This class is abstract and cannot be instantiated

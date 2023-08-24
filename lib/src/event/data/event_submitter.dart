@@ -1,5 +1,8 @@
-import 'package:clear_insight/src/core.dart';
+import 'package:clear_insight/src/core/records.dart';
 
+/// The Event Submitter
+// ignore: one_member_abstracts
 abstract interface class EventSubmitter {
-  Future<void> submit(EventRecord event);
+  /// The Event Submitter constructor
+  Future<void> submit(DataRecord<EventRecord> event);
 }

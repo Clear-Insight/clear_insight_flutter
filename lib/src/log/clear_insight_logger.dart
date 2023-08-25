@@ -8,7 +8,8 @@ part 'clear_insight_logger_impl.dart';
 
 /// The Clear Insight Logger
 abstract class ClearInsightLogger {
-  static final ClearInsightLogger _instance = ClearInsightLoggerImplementation();
+  static final ClearInsightLogger _instance =
+      ClearInsightLoggerImplementation();
 
   /// The Clear Insight Logger instance
   static final ClearInsightLogger instance = _instance;
@@ -21,6 +22,9 @@ abstract class ClearInsightLogger {
 
   /// Log an event
   void logEvent(EventRecord eventRecord);
+
+  /// Log the current screen
+  void logCurrentScreen({required String screenName});
 
   /// Log an error
   void logError(String message, {required Object error});

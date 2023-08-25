@@ -47,6 +47,9 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      navigatorObservers: [
+        ClearInsightObserver(),
+      ],
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -110,7 +113,8 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: GestureDetector(
-          onTap: () => ClearInsight.instance.logTextTapped(currentCount: _counter),
+          onTap: () =>
+              ClearInsight.instance.logTextTapped(currentCount: _counter),
           child: Column(
             // Column is also a layout widget. It takes a list of children and
             // arranges them vertically. By default, it sizes itself to fit its

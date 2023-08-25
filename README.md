@@ -1,5 +1,5 @@
 <center>
-  <img src="https://www.clearinsight.dev/images/github_header.png" width="120"/>
+  <img src="https://www.clearinsight.dev/images/github_header.png" width="240"/>
 </center>
 
 </br>

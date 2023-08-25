@@ -1,6 +1,6 @@
 import 'package:clear_insight/src/_event.dart';
+import 'package:clear_insight/src/core/data_model.dart';
 import 'package:clear_insight/src/core/network.dart';
-import 'package:clear_insight/src/core/records.dart';
 
 /// The Event Submitter
 class DirectEventSubmitter implements EventSubmitter {
@@ -13,7 +13,7 @@ class DirectEventSubmitter implements EventSubmitter {
 
   @override
   Future<void> submit(
-    DataRecord<EventRecord> data,
+    DataModel<EventModel> data,
   ) async =>
       _apiClient.sendEvent(data);
 }

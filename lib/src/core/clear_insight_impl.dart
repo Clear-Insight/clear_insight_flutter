@@ -3,9 +3,12 @@ part of 'clear_insight.dart';
 class _ClearInsightImplementation implements ClearInsight {
   _ClearInsightImplementation({
     required ClearInsightModel model,
-  }) : _model = model;
+    required ClearInsightServices services,
+  })  : _model = model,
+        _services = services;
 
   final ClearInsightModel _model;
+  final ClearInsightServices _services;
   final ClearInsightLogger _logger = ClearInsightLogger.instance;
 
   /// The project ID
@@ -23,7 +26,7 @@ class _ClearInsightImplementation implements ClearInsight {
 
   /// Platform information
   /// Contains the version, type and debug mode
-  final _platform = (
+  final _platform = PlatformModel(
     version: Platform.operatingSystemVersion,
     type: defaultTargetPlatform.platformType,
     debug: kDebugMode,
@@ -44,7 +47,7 @@ class _ClearInsightImplementation implements ClearInsight {
       );
       return;
     }
-
+    _services.client.projectId = projectId;
     _isInitialized = true;
   }
 
@@ -63,9 +66,17 @@ class _ClearInsightImplementation implements ClearInsight {
   void logEvent(EventRecord event) {
     if (!validateInitialized()) return;
     if (_enableDebug) _logger.logEvent(event);
-    _model.logEvent(
-      (data: event, projectId: _projectId, platform: _platform),
+    final eventModel = EventModel(
+      id: event.id,
+      name: event.name,
+      parameters: event.parameters,
     );
+    final dataModel = DataModel(
+      data: eventModel,
+      projectId: _projectId,
+      platform: _platform,
+    );
+    _services.eventSubmitter.submit(dataModel);
   }
 
   @override
@@ -86,5 +97,20 @@ class _ClearInsightImplementation implements ClearInsight {
     } else {
       _logger.disableDebugMode();
     }
+  }
+
+  @override
+  void setCurrentScreen({required String screenName}) {
+    if (!validateInitialized()) return;
+    if (_enableDebug) _logger.logCurrentScreen(screenName: screenName);
+    final eventModel = ScreenViewModel(
+      name: screenName,
+    );
+    final dataModel = DataModel(
+      data: eventModel,
+      projectId: _projectId,
+      platform: _platform,
+    );
+    _services.screenViewSubmitter.submit(dataModel);
   }
 }

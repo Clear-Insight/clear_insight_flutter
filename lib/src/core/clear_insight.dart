@@ -1,12 +1,15 @@
 import 'dart:io';
 
+import 'package:clear_insight/src/_event.dart';
 import 'package:clear_insight/src/core/clear_insight_model.dart';
+import 'package:clear_insight/src/core/data_model.dart';
 import 'package:clear_insight/src/core/error_messages.dart';
+import 'package:clear_insight/src/core/platform_model.dart';
 import 'package:clear_insight/src/core/platform_type_extensions.dart';
 import 'package:clear_insight/src/core/records.dart';
 import 'package:clear_insight/src/core/services.dart';
 import 'package:clear_insight/src/log.dart';
-import 'package:clear_insight/src/project.dart';
+import 'package:clear_insight/src/screen/screen_view_model.dart';
 import 'package:flutter/foundation.dart';
 
 part 'clear_insight_impl.dart';
@@ -38,10 +41,8 @@ abstract class ClearInsight {
   /// ClearInsight.I;
   /// ```
   static final ClearInsight _instance = _ClearInsightImplementation(
-    model: ClearInsightModel(
-      eventModel: _services.eventModel,
-      projectModel: ProjectModel(),
-    ),
+    model: _services.model,
+    services: _services,
   );
 
   /// Initialize the Singleton instance
@@ -57,6 +58,11 @@ abstract class ClearInsight {
   /// This is only available after you call [ClearInsight.init]
   /// And is used to log events with a pre-defined type
   void logEvent(EventRecord event);
+
+  /// Log the current screen
+  /// This is only available after you call [ClearInsight.init]
+  /// And is used to log the current screen
+  void setCurrentScreen({required String screenName});
 
   /// Enable debug mode
   void enableDebug();

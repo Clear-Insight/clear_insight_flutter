@@ -14,7 +14,10 @@ class ClearInsightLoggerImplementation implements ClearInsightLogger {
       [
         (label: 'ID', message: eventRecord.id),
         (label: 'Name', message: eventRecord.name ?? 'No name provided'),
-        (label: 'Event', message: '${UrlConstants.eventBaseUrl}/${eventRecord.id}'),
+        (
+          label: 'Event',
+          message: '${UrlConstants.eventBaseUrl}/${eventRecord.id}'
+        ),
         (label: 'Timestamp', message: DateTime.now().toString()),
         (label: 'Parameters', message: eventRecord.parameters.toString()),
       ],
@@ -97,6 +100,22 @@ class ClearInsightLoggerImplementation implements ClearInsightLogger {
   @override
   void disableDebugMode() {
     _enableDebug = false;
+  }
+
+  @override
+  void logCurrentScreen({required String screenName}) {
+    if (!_enableDebug) return;
+    _log(
+      'Submitted Screen View',
+      [
+        (label: 'Name', message: screenName),
+        (
+          label: 'Event',
+          message: '${UrlConstants.screenViewBaseUrl}/$screenName'
+        ),
+        (label: 'Timestamp', message: DateTime.now().toString()),
+      ],
+    );
   }
 }
 

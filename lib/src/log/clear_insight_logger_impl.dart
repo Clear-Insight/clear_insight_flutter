@@ -7,19 +7,19 @@ class ClearInsightLoggerImplementation implements ClearInsightLogger {
   bool _enableDebug = false;
 
   @override
-  void logEvent(EventRecord eventRecord) {
+  void logEvent(EventRecord eventRecord, DateTime timestamp) {
     if (!_enableDebug) return;
     _log(
       'Submitted Event',
       [
         (label: 'ID', message: eventRecord.id),
         (label: 'Name', message: eventRecord.name ?? 'No name provided'),
+        (label: 'Parameters', message: eventRecord.parameters.toString()),
+        (label: 'Timestamp', message: timestamp.toString()),
         (
-          label: 'Event',
+          label: 'Link',
           message: '${UrlConstants.eventBaseUrl}/${eventRecord.id}'
         ),
-        (label: 'Timestamp', message: DateTime.now().toString()),
-        (label: 'Parameters', message: eventRecord.parameters.toString()),
       ],
     );
   }
@@ -34,20 +34,18 @@ class ClearInsightLoggerImplementation implements ClearInsightLogger {
       ..write('\n')
       ..write('┌──────────────────────────')
       ..write('\n')
-      ..write(level.emoji)
-      ..write(_emptyWhiteSpace)
-      ..write('\x1B[37m')
+      ..write('[')
       ..write(title)
-      ..write('\x1B[0m');
+      ..write(']')
+      ..write(_emptyWhiteSpace)
+      ..write(level.emoji);
 
     for (final message in messages) {
       buffer
         ..write('\n')
-        ..write('\x1B[34m')
         ..write('[')
         ..write(message.label)
         ..write(']')
-        ..write('\x1B[0m')
         ..write(_emptyWhiteSpace)
         ..write(message.message);
     }
@@ -103,17 +101,18 @@ class ClearInsightLoggerImplementation implements ClearInsightLogger {
   }
 
   @override
-  void logCurrentScreen({required String screenName}) {
+  void logCurrentScreen(ScreenViewRecord screenViewRecord, DateTime timestamp) {
     if (!_enableDebug) return;
     _log(
       'Submitted Screen View',
       [
-        (label: 'Name', message: screenName),
+        (label: 'Name', message: screenViewRecord.name),
+        (label: 'Path', message: screenViewRecord.path),
+        (label: 'Timestamp', message: timestamp.toString()),
         (
-          label: 'Event',
-          message: '${UrlConstants.screenViewBaseUrl}/$screenName'
+          label: 'Link',
+          message: '${UrlConstants.screenViewBaseUrl}/${screenViewRecord.name}'
         ),
-        (label: 'Timestamp', message: DateTime.now().toString()),
       ],
     );
   }

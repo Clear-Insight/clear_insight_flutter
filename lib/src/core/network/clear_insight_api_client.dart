@@ -75,6 +75,7 @@ extension on DataModel<ScreenViewModel> {
           'type': platform.type.name,
           'debug': platform.debug,
         },
+        'timestamp': timestamp.toIso8601String(),
       },
     );
   }
@@ -95,6 +96,7 @@ extension on DataModel<EventModel> {
           'type': platform.type.name,
           'debug': platform.debug,
         },
+        'timestamp': timestamp.toIso8601String(),
       },
     );
   }

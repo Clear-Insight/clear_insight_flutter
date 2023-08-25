@@ -7,6 +7,7 @@ class DataModel<T> {
     required this.data,
     required this.projectId,
     required this.platform,
+    required this.timestamp,
   });
 
   /// The data to be sent
@@ -17,4 +18,7 @@ class DataModel<T> {
 
   /// The platform
   final PlatformModel platform;
+
+  /// The logging timestamp
+  final DateTime timestamp;
 }

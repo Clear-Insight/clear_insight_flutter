@@ -65,7 +65,8 @@ class _ClearInsightImplementation implements ClearInsight {
   @override
   void logEvent(EventRecord event) {
     if (!validateInitialized()) return;
-    if (_enableDebug) _logger.logEvent(event);
+    final logTimestamp = DateTime.now();
+    if (_enableDebug) _logger.logEvent(event, logTimestamp);
     final eventModel = EventModel(
       id: event.id,
       name: event.name,
@@ -75,6 +76,7 @@ class _ClearInsightImplementation implements ClearInsight {
       data: eventModel,
       projectId: _projectId,
       platform: _platform,
+      timestamp: logTimestamp,
     );
     _services.eventSubmitter.submit(dataModel);
   }
@@ -100,16 +102,19 @@ class _ClearInsightImplementation implements ClearInsight {
   }
 
   @override
-  void setCurrentScreen({required String screenName}) {
+  void setCurrentScreen(ScreenViewRecord screenView) {
     if (!validateInitialized()) return;
-    if (_enableDebug) _logger.logCurrentScreen(screenName: screenName);
+    final logTimestamp = DateTime.now();
+    if (_enableDebug) _logger.logCurrentScreen(screenView, logTimestamp);
     final eventModel = ScreenViewModel(
-      name: screenName,
+      name: screenView.name,
+      path: screenView.path,
     );
     final dataModel = DataModel(
       data: eventModel,
       projectId: _projectId,
       platform: _platform,
+      timestamp: logTimestamp,
     );
     _services.screenViewSubmitter.submit(dataModel);
   }

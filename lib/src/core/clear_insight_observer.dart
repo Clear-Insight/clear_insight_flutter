@@ -7,10 +7,17 @@ class ClearInsightObserver extends RouteObserver<ModalRoute<dynamic>> {
   final _clearInsight = ClearInsight.instance;
 
   void _sendScreenView(Route<dynamic> route) {
-    final screenName = route.settings.name;
-    if (screenName != null) {
-      _clearInsight.setCurrentScreen(screenName: screenName);
+    var screenName = route.settings.name?.split('/').last;
+    if (screenName == null || screenName.isEmpty) {
+      screenName = 'main';
     }
+    final screenPath = route.settings.name!;
+    _clearInsight.setCurrentScreen(
+      (
+        name: screenName,
+        path: screenPath,
+      ),
+    );
   }
 
   @override

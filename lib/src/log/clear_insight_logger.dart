@@ -21,10 +21,10 @@ abstract class ClearInsightLogger {
   void disableDebugMode();
 
   /// Log an event
-  void logEvent(EventRecord eventRecord);
+  void logEvent(EventRecord eventRecord, DateTime timestamp);
 
   /// Log the current screen
-  void logCurrentScreen({required String screenName});
+  void logCurrentScreen(ScreenViewRecord screenViewRecord, DateTime timestamp);
 
   /// Log an error
   void logError(String message, {required Object error});

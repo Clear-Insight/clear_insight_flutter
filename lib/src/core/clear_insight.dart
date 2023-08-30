@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:clear_insight/src/_event.dart';
 import 'package:clear_insight/src/_screen.dart';

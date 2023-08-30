@@ -7,10 +7,20 @@ typedef EventRecord = ({
   String id,
 
   /// The parameters to log with this event. This can be null.
-  Map<String, dynamic>? parameters,
+  Map<String, ParameterRecord>? parameters,
 
   /// The name of the event. This is only used for debugging purposes.
   String? name,
+});
+
+/// ParameterRecord is a record of a parameter that is logged to the console.
+typedef ParameterRecord = ({
+  /// The name of the parameter. This is required. As it needs to correspond to
+  /// the parameter name in the console.
+  String name,
+
+  /// The value of the parameter. This can be null.
+  dynamic value,
 });
 
 /// ScreenViewRecord is a record of a screen view that is logged to the

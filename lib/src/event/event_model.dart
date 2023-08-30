@@ -1,11 +1,13 @@
+import 'package:clear_insight/src/_event.dart';
+
 /// The Event Model
 /// This is used to log events
 class EventModel {
   /// The Event Model constructor
   EventModel({
     required this.id,
+    required this.parameters,
     this.name,
-    this.parameters,
   });
 
   /// The event id
@@ -15,5 +17,5 @@ class EventModel {
   String? name;
 
   /// The event parameters
-  Map<String, dynamic>? parameters;
+  List<ParameterModel> parameters;
 }

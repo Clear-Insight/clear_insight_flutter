@@ -14,19 +14,17 @@ class ClearInsightApiClient {
 
   final ClearInsightClient _client;
 
-  static const String _host = 'https://enbizgyrjivkg.x.pipedream.net';
+  static const String _host = 'http://localhost:8000';
 
   /// Sends an event to the Clear Insight API.
   Future<void> sendEvent(DataModel<EventModel> dataRecord) async {
-    final request = Request('POST', _url('/events'))
-      ..body = dataRecord.toEventBody;
+    final request = Request('POST', _url('/events/log'))..body = dataRecord.toEventBody;
     await _client.send(request);
   }
 
   /// Sends an screen view to the Clear Insight API.
   Future<void> sendScreenView(DataModel<ScreenViewModel> dataRecord) async {
-    final request = Request('POST', _url('/screenview'))
-      ..body = dataRecord.toScreenViewBody;
+    final request = Request('POST', _url('/screenview'))..body = dataRecord.toScreenViewBody;
     await _client.send(request);
   }
 
@@ -66,7 +64,6 @@ extension on DataModel<ScreenViewModel> {
   String get toScreenViewBody {
     return json.encode(
       {
-        'project_id': projectId,
         'screen_view': {
           'name': data.name,
         },
@@ -85,11 +82,12 @@ extension on DataModel<EventModel> {
   String get toEventBody {
     return json.encode(
       {
-        'project_id': projectId,
         'event': {
           'id': data.id,
           'name': data.name,
-          'parameters': data.parameters,
+          'parameters': data.parameters.map(
+            (parameter) => parameter.toJson,
+          ),
         },
         'platform': {
           'version': platform.version,
@@ -99,5 +97,15 @@ extension on DataModel<EventModel> {
         'timestamp': timestamp.toIso8601String(),
       },
     );
+  }
+}
+
+extension on ParameterModel {
+  Map<String, dynamic> get toJson {
+    return {
+      'id': id,
+      'name': name,
+      'value': value,
+    };
   }
 }

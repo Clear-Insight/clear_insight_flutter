@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     ClearInsight.instance.init(
-      projectId: 'YOUR_PROJECT_ID',
+      projectId: 'f1a84241-f0f1-4359-9f63-7108d0c51239',
       enableDebug: true,
     );
     super.initState();
@@ -113,8 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: GestureDetector(
-          onTap: () =>
-              ClearInsight.instance.logTextTapped(currentCount: _counter),
+          onTap: () => ClearInsight.instance.logTextTapped(currentCount: _counter),
           child: Column(
             // Column is also a layout widget. It takes a list of children and
             // arranges them vertically. By default, it sizes itself to fit its

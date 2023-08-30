@@ -67,10 +67,22 @@ class _ClearInsightImplementation implements ClearInsight {
     if (!validateInitialized()) return;
     final logTimestamp = DateTime.now();
     if (_enableDebug) _logger.logEvent(event, logTimestamp);
+    final parameters = <ParameterModel>[];
+    event.parameters?.forEach(
+      (id, parameter) {
+        parameters.add(
+          ParameterModel(
+            id: id,
+            name: parameter.name,
+            value: parameter.value,
+          ),
+        );
+      },
+    );
     final eventModel = EventModel(
       id: event.id,
       name: event.name,
-      parameters: event.parameters,
+      parameters: parameters,
     );
     final dataModel = DataModel(
       data: eventModel,
@@ -78,7 +90,7 @@ class _ClearInsightImplementation implements ClearInsight {
       platform: _platform,
       timestamp: logTimestamp,
     );
-    _services.eventSubmitter.submit(dataModel);
+    unawaited(_services.eventSubmitter.submit(dataModel));
   }
 
   @override
@@ -116,6 +128,6 @@ class _ClearInsightImplementation implements ClearInsight {
       platform: _platform,
       timestamp: logTimestamp,
     );
-    _services.screenViewSubmitter.submit(dataModel);
+    unawaited(_services.screenViewSubmitter.submit(dataModel));
   }
 }

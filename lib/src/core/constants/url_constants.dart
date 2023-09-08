@@ -15,9 +15,5 @@ class UrlConstants {
 
   /// Api Urls
   /// Api base url
-  static const String apiBaseUrl =
-      'https://pittcymwbijoapdxlvtf.supabase.co/functions/v1';
-
-  /// Api Event base url
-  static const String eventsBaseUrl = '$apiBaseUrl/events';
+  static const String apiBaseUrl = 'https://pittcymwbijoapdxlvtf.supabase.co/functions/v1';
 }

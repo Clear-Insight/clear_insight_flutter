@@ -3,4 +3,4 @@ targets:
     builders:
       clear_insight_generator:
         options:
-          project_id: "YOUR_PROJECT_ID2"
+          project_id: "f1a84241-f0f1-4359-9f63-7108d0c51239"

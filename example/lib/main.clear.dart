@@ -8,8 +8,8 @@ import 'package:clear_insight/clear_insight.dart';
 
 extension ClearInsightEventExtension on ClearInsight {
   void logCounterIncremented({
-    required int currentCount,
-    required int nextCount,
+    required num currentCount,
+    required num nextCount,
   }) =>
       logEvent(
         (
@@ -17,11 +17,11 @@ extension ClearInsightEventExtension on ClearInsight {
           parameters: {
             'f58f3ad0-60b3-46b3-b7c2-8c0250dcfef1': (
               name: 'current_count',
-              value: 'current_count',
+              value: currentCount,
             ),
             '95557045-4253-4387-a8e7-1fdca25f770a': (
               name: 'next_count',
-              value: 'next_count',
+              value: nextCount,
             ),
           },
           name: 'counter_incremented',
@@ -29,7 +29,7 @@ extension ClearInsightEventExtension on ClearInsight {
       );
 
   void logTextTapped({
-    required int currentCount,
+    required num currentCount,
   }) =>
       logEvent(
         (
@@ -37,7 +37,7 @@ extension ClearInsightEventExtension on ClearInsight {
           parameters: {
             '8a6267c5-2ffb-43f9-b967-16d5458d7f38': (
               name: 'current_count',
-              value: 'current_count',
+              value: currentCount,
             ),
           },
           name: 'text_tapped',

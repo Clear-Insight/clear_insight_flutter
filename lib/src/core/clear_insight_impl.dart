@@ -74,7 +74,7 @@ class _ClearInsightImplementation implements ClearInsight {
           ParameterModel(
             id: id,
             name: parameter.name,
-            value: parameter.value,
+            value: parameter.value.toString(),
           ),
         );
       },

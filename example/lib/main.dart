@@ -77,18 +77,19 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
+    final incrementedValue = _counter + 1;
+    ClearInsight.instance.logCounterIncremented(
+      currentCount: _counter,
+      nextCount: incrementedValue,
+    );
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      _counter = incrementedValue;
     });
-    ClearInsight.instance.logCounterIncremented(
-      currentCount: _counter - 1,
-      nextCount: _counter,
-    );
   }
 
   @override

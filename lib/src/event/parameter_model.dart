@@ -14,5 +14,5 @@ class ParameterModel {
   final String name;
 
   /// The parameter value
-  final dynamic value;
+  final String value;
 }

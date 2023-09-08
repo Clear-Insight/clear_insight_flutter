@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:clear_insight/src/_event.dart';
 import 'package:clear_insight/src/_screen.dart';
+import 'package:clear_insight/src/core/_constants.dart';
 import 'package:clear_insight/src/core/data_model.dart';
 import 'package:http/http.dart';
 
@@ -14,8 +15,6 @@ class ClearInsightApiClient {
 
   final ClearInsightClient _client;
 
-  static const String _host = 'http://localhost:8000';
-
   /// Sends an event to the Clear Insight API.
   Future<void> sendEvent(DataModel<EventModel> dataRecord) async {
     final request = Request('POST', _url('/events/log'))..body = dataRecord.toEventBody;
@@ -24,11 +23,11 @@ class ClearInsightApiClient {
 
   /// Sends an screen view to the Clear Insight API.
   Future<void> sendScreenView(DataModel<ScreenViewModel> dataRecord) async {
-    final request = Request('POST', _url('/screenview'))..body = dataRecord.toScreenViewBody;
+    final request = Request('POST', _url('/screen_view'))..body = dataRecord.toScreenViewBody;
     await _client.send(request);
   }
 
-  Uri _url(String path) => Uri.parse('$_host$path');
+  Uri _url(String path) => Uri.parse('${UrlConstants.apiBaseUrl}$path');
 }
 
 /// Client that adds the Clear Insight project ID to requests.
@@ -66,6 +65,7 @@ extension on DataModel<ScreenViewModel> {
       {
         'screen_view': {
           'name': data.name,
+          'path': data.path,
         },
         'platform': {
           'version': platform.version,
@@ -85,9 +85,7 @@ extension on DataModel<EventModel> {
         'event': {
           'id': data.id,
           'name': data.name,
-          'parameters': data.parameters.map(
-            (parameter) => parameter.toJson,
-          ),
+          'parameters': data.parameters.map((parameter) => parameter.toJson).toList(),
         },
         'platform': {
           'version': platform.version,
@@ -101,7 +99,7 @@ extension on DataModel<EventModel> {
 }
 
 extension on ParameterModel {
-  Map<String, dynamic> get toJson {
+  Map<String, String> get toJson {
     return {
       'id': id,
       'name': name,

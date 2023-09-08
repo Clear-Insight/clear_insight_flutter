@@ -11,7 +11,7 @@
 [![Pub points](https://img.shields.io/pub/points/clearinsight)](https://pub.dev/packages/clearinsight/score)
 [![Website](https://img.shields.io/badge/website-clearinsight.dev-blue.svg)](https://clearinsight.dev/)
 
-Clear Insight is a Flutter SDK that allows you to easily integrate analytics into your Flutter app. It is built with developer experience in mind, and is designed to be easy to use and integrate into your app.
+ClearInsight is a Flutter SDK that allows you to easily integrate analytics into your Flutter app. It is built with developer experience in mind, and is designed to be easy to use and integrate into your app.
 
 ## 3-Minute Quick Start
 

@@ -1,11 +1,12 @@
 name: clear_insight
 description: Clear Insight is a Flutter SDK that allows you to easily integrate analytics into your Flutter app. It is built with developer experience in mind, and is designed to be easy to use and integrate into your app.
 version: 0.1.0+1
-publish_to: none
+homepage: https://clearinsight.dev
+repository: https://github.com/Clear-Insight/clear_insight_flutter
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
-  flutter: 3.10.0
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:

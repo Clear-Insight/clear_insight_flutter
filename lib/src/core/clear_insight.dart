@@ -70,6 +70,12 @@ abstract class ClearInsight {
   /// Disable debug mode
   void disableDebug();
 
+  /// Whether debug mode is enabled
+  bool get isDebug;
+
   /// Access to the Singleton instance
   static ClearInsight get instance => _instance;
+
+  /// If the instance has been initialized
+  bool get isInitialized;
 }

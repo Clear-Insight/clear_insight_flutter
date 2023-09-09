@@ -27,7 +27,7 @@ class _ClearInsightImplementation implements ClearInsight {
   /// Platform information
   /// Contains the version, type and debug mode
   final _platform = PlatformModel(
-    version: Platform.operatingSystemVersion,
+    version: kIsWeb ? 'unknown' : Platform.operatingSystemVersion,
     type: defaultTargetPlatform.platformType,
     debug: kDebugMode,
   );
@@ -57,7 +57,7 @@ class _ClearInsightImplementation implements ClearInsight {
         ErrorMessages.notInitialized.label,
         error: ErrorMessages.notInitialized.message,
       );
-      return false;
+      return throw AssertionError(ErrorMessages.notInitialized.message);
     }
     return true;
   }
@@ -130,4 +130,10 @@ class _ClearInsightImplementation implements ClearInsight {
     );
     unawaited(_services.screenViewSubmitter.submit(dataModel));
   }
+
+  @override
+  bool get isInitialized => _isInitialized;
+
+  @override
+  bool get isDebug => _enableDebug;
 }

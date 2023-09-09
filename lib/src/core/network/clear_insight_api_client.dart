@@ -80,13 +80,15 @@ extension on DataModel<ScreenViewModel> {
 
 extension on DataModel<EventModel> {
   String get toEventBody {
+    final parameters = data.parameters
+        .map(
+          (parameter) => parameter.toJson,
+        )
+        .toList();
+
     return json.encode(
       {
-        'event': {
-          'id': data.id,
-          'name': data.name,
-          'parameters': data.parameters.map((parameter) => parameter.toJson).toList(),
-        },
+        'event': {'id': data.id, 'name': data.name, 'parameters': parameters},
         'platform': {
           'version': platform.version,
           'type': platform.type.name,
